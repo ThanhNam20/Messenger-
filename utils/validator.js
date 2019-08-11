@@ -25,7 +25,7 @@ function newValidator() {
   validator.validate = (object, rules) => {
     // validate here...
     const keys = Object.keys(rules);
-    const errors = {};
+    const errors = [];
     for (var key of keys) {
       const value = object[key];
       for (const rule of rules[key]) {
