@@ -42,12 +42,12 @@ function onload() {
       view.loadScreen(forgetpassword.view, forgetpassword.onload);
     });
     newAccountPage.addEventListener("click", function() {
-        view.loadScreen(register.view, register.onload); 
+        view.loadScreen(register); 
     });
     
 }
 const login = {
-    view: loginScreen,
+    content: loginScreen,
     onload: onload
 }
 export default login;

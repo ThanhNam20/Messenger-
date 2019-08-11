@@ -1,6 +1,6 @@
 import view from "../view.js";
 import login from "./login.js"
-
+import newAuthcontroller from "../../Controllers/authController.js"
 const registerScreen = `
 <div class="container">
         <div class="row">
@@ -13,18 +13,18 @@ const registerScreen = `
                 </p>
                 <hr>
                 
-                <form>
+                <form id="js-formRegister">
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Full name" type="text">
+                        <input class="form-control" id="name" placeholder="Full name" type="text">
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Email address" type="email">
+                        <input name="" class="form-control" id="email" placeholder="Email address" type="email">
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
@@ -33,36 +33,51 @@ const registerScreen = `
                         <select class="custom-select" style="max-width: 120px;">
                             <option selected="">+084</option>
                         </select>
-                        <input name="" class="form-control" placeholder="Phone number" type="text">
+                        <input name="" class="form-control" id="number" placeholder="Phone number" type="text">
                     </div> <!-- form-group// -->    
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password">
+                        <input class="form-control" id="password" placeholder="Create password" type="password">
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            <span class="input-group-text"><i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Repeat password" type="password">
+                        <input class="form-control" id="repassword" placeholder="Repeat password" type="password">
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-block"> Create Account </button>
+                        <button type="button" id="js-btnRegister" class="btn btn-primary btn-block"> Create Account </button>
                     </div> <!-- form-group// -->
-                    <p class="text-center">Have an account? <a href="" id="loginPage" >Sign in</a> </p>
+                    <p class="text-center">Have an account? <a href="#" id="loginPage" >Sign in</a> </p>
                 </form>
             </article>
         </div>
     </div>`;
 function onload() {
+  const btnRegister = document.getElementById('js-btnRegister');  
+  const formRegister = document.getElementById('js-formRegister')
   const loginPage = document.getElementById("loginPage");
   loginPage.addEventListener("click", function() {
-    view.loadScreen(register.view, register.onload);
+    view.loadScreen(login);
   });
+  btnRegister.addEventListener('click',event =>{
+      event.preventDefault();
+      const registerPayLoad = {
+        name: formRegister.name.value,
+        email: formRegister.email.value,
+        number: formRegister.number.value,
+        password: formRegister.password.value,
+        repassword: formRegister.repassword.value
+      };
+    const authController = newAuthcontroller();
+    authController.register(registerPayLoad);
+  })
 }
+
 const register = {
-  view: registerScreen,
+  content: registerScreen,
   onload: onload
 };
 export default register;

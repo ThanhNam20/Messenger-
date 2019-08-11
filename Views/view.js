@@ -1,8 +1,6 @@
 const view = {};
-view.loadScreen = function (content, loadEvent) {
-    document.getElementById("app").innerHTML=content;
-    if (loadEvent !== undefined) {
-      loadEvent();
+view.loadScreen = function (screen) {
+    document.getElementById("app").innerHTML=screen.content;
+    screen.onload();
     }
-}
 export default view;

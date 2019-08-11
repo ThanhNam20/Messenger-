@@ -24,11 +24,11 @@ const resetPassScreen = `<div class="container">
     function onload() {
       const backToLoginPage = document.getElementById("backToLoginPage");
       backToLoginPage.addEventListener("click", function() {
-        view.loadScreen(login.view, login.onload);
+        view.loadScreen(login);
       });
     }
     const forgetpassword = {
-      view: resetPassScreen,
+      content: resetPassScreen,
       onload: onload
     };
     export default forgetpassword;
