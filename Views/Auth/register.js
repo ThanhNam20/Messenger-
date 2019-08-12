@@ -1,6 +1,9 @@
 import view from "../view.js";
-import login from "./login.js"
-import newAuthcontroller from "../../Controllers/authController.js"
+import login from "./login.js";
+import newAuthcontroller from "../../Controllers/authController.js";
+import { responseCode } from "../../Controllers/response.js";
+import messages from "../status.js";
+
 const registerScreen = `
 <div class="container">
         <div class="row">
@@ -56,24 +59,58 @@ const registerScreen = `
         </div>
     </div>`;
 function onload() {
-  const btnRegister = document.getElementById('js-btnRegister');  
-  const formRegister = document.getElementById('js-formRegister')
+  const btnRegister = document.getElementById("js-btnRegister");
+  const formRegister = document.getElementById("js-formRegister");
   const loginPage = document.getElementById("loginPage");
   loginPage.addEventListener("click", function() {
     view.loadScreen(login);
+    loginPage.reset();
   });
-  btnRegister.addEventListener('click',event =>{
-      event.preventDefault();
-      const registerPayLoad = {
-        name: formRegister.name.value,
-        email: formRegister.email.value,
-        number: formRegister.number.value,
-        password: formRegister.password.value,
-        repassword: formRegister.repassword.value
-      };
+  btnRegister.addEventListener("click", event => {
+    event.preventDefault();
+    const registerPayLoad = {
+      name: formRegister.name.value,
+      email: formRegister.email.value,
+      number: formRegister.number.value,
+      password: formRegister.password.value,
+      repassword: formRegister.repassword.value
+    };
+    clearErrors();
     const authController = newAuthcontroller();
-    authController.register(registerPayLoad);
-  })
+    const response = authController.register(registerPayLoad);
+    if ((response.type = "failure")) {
+      switch (response.code) {
+        case responseCode.auth.register.invalid_input:
+          //invalid input
+          showErrors(response.data);
+          break;
+      }
+    }
+  });
+}
+
+function showErrors(errors) {
+  const fields = Object.keys(errors);
+  for (let i = 0; i < fields.length; i++) {
+    const field = fields[i];
+    const input = document.getElementById(field);
+    input.classList.add("is-invalid");
+    for (var j = 0; j < errors[field].length; j++) {
+      const error = errors[field][j];
+      const errorFeedback = document.createElement("div");
+      errorFeedback.setAttribute("class", "invalid-feedback");
+      errorFeedback.innerHTML = messages.error[field][error.message];
+
+      const inputParent = input.parentElement;
+      inputParent.insertBefore(errorFeedback, input.nextSibling);
+    }
+  }
+}
+function clearErrors() {
+  const errorFeedbacks = document.getElementsByClassName("invalid-feedback");
+  while (errorFeedbacks.length > 0) {
+    errorFeedbacks[0].remove();
+  }
 }
 
 const register = {
