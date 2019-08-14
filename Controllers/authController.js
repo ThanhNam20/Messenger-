@@ -8,7 +8,8 @@ import {
 
 function newAuthController() {
   const controller = {};
-  controller.register = async function(registerPayLoad){
+  //register controller
+  controller.register = async registerPayLoad => {
     // Validate data
     const rules = {
       name: [
@@ -67,6 +68,21 @@ function newAuthController() {
       responseCode.auth.register.success,
       firebase.auth().currentUser
     );
+  };
+
+  //login controller
+  controller.login = async loginPayLoad => {
+    //firebase Login
+    const result = await firebase
+      .auth()
+      .signInWithEmailAndPassword(loginPayLoad.email, loginPayLoad.password)
+      .catch(function(error) {
+        Swal.fire({
+          type: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please check your email and password again!",
+        });
+      });
   };
 
   return controller;

@@ -4,5 +4,5 @@ import register from "./Views/Auth/register.js"
 //import register from "./Views/Auth/register.js";
 //import forgetpassword from "./Views/Auth/forgetpassword.js";
 window.onload = function () {
-    view.loadScreen(register);
+    view.loadScreen(login);
 }
