@@ -1,13 +1,16 @@
 import view from "../view.js";
 import register from "./register.js";
 import forgetpassword from "./forgetpassword.js";
+import { googleLogin } from "../../Controllers/googleLogin.js";
+import { facebookLogin } from "../../Controllers/facebookLogin.js";
+
 const loginScreen = `<div class="container">
         <div class="row">
             <article class="card-body mx-auto" style="max-width: 500px;">
                 <h3 class="card-title mt-3 text-center">Sign in</h3>
-                    <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i> Sign in with Google+
+                    <a href="" id="google" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i> Sign in with Google+
                     </a>
-                    <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> Sign in with
+                    <a href="" id="facebook" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> Sign in with
                         Facebook</a>
                 </p>
                 <hr>
@@ -38,6 +41,9 @@ const loginScreen = `<div class="container">
 function onload() {
     const resetPassPage = document.getElementById("resetPassPage");
     const newAccountPage = document.getElementById("newAccountPage");
+    const google = document.getElementById("google");
+    const facebook = document.getElementById("facebook");
+
     resetPassPage.addEventListener("click", function() {
       view.loadScreen(forgetpassword.view, forgetpassword.onload);
     });
@@ -45,6 +51,15 @@ function onload() {
         view.loadScreen(register); 
     });
     
+    facebook.addEventListener("click", event => {
+      event.preventDefault();
+      facebookLogin();
+    });
+
+    google.addEventListener("click", event => {
+      event.preventDefault();
+      googleLogin();
+    });
 }
 const login = {
     content: loginScreen,

@@ -64,7 +64,7 @@ function onload() {
   const formRegister = document.getElementById("js-formRegister");
   const loginPage = document.getElementById("loginPage");
   const google = document.getElementById('google');
-   const facebook = document.getElementById("facebook");
+  const facebook = document.getElementById("facebook");
 
   facebook.addEventListener("click", event => {
     event.preventDefault();
