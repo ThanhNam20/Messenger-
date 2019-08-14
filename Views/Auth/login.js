@@ -54,7 +54,7 @@ function onload() {
     })
 
     resetPassPage.addEventListener("click", function() {
-      view.loadScreen(forgetpassword.view, forgetpassword.onload);
+      view.loadScreen(forgetpassword);
     });
     newAccountPage.addEventListener("click", function() {
         view.loadScreen(register); 

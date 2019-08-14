@@ -85,6 +85,25 @@ function newAuthController() {
       });
   };
 
+// firebase reset
+  controller.resetPass = async resetPayLoad => {
+    const auth = await firebase.auth();
+    auth
+      .sendPasswordResetEmail(resetPayLoad.email)
+      .then(function() {
+        Swal.fire("Success!","Check your email to reset password", "success");
+      })
+      .catch(function(error) {
+        Swal.fire({
+          type: "error",
+          title: "Oops...",
+          text:
+            "Your email do not exist! Please check again!"
+        });
+      });
+  };
+
+
   return controller;
 }
 export default newAuthController;

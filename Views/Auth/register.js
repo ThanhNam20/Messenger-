@@ -89,6 +89,9 @@ function onload() {
         case responseCode.auth.register.success:
           //success input
             showSuccessMessage();
+            setTimeout(() => {
+              view.loadScreen(login); 
+            }, 1500);
       }
     }
   });
