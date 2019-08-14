@@ -8,7 +8,7 @@ export function newSuccessResponse(code, data) {
 
  export function newFailureResponse(code, data){
     return {
-      type: "failure",
+      type: 'failure',
       code: code,
       data: data
     };
@@ -17,7 +17,8 @@ export function newSuccessResponse(code, data) {
 export const responseCode = {
     auth: {
         register :{
-            invalid_input: 'auth/register/invalid_input'
+            invalid_input: 'auth/register/invalid_input',
+            success: 'auth/register/success'
         }
     }
 }

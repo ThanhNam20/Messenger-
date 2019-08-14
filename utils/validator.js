@@ -19,7 +19,7 @@ function newValidator() {
   };
 
   validator.isMatching = (value, rule) => {
-    return String(value) === rule.value;
+    return String(value) >= rule.value;
   };
 
   validator.validate = (object, rules) => {

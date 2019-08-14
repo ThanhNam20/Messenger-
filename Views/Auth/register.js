@@ -64,9 +64,8 @@ function onload() {
   const loginPage = document.getElementById("loginPage");
   loginPage.addEventListener("click", function() {
     view.loadScreen(login);
-    loginPage.reset();
   });
-  btnRegister.addEventListener("click", event => {
+  btnRegister.addEventListener("click", async function(event){
     event.preventDefault();
     const registerPayLoad = {
       name: formRegister.name.value,
@@ -77,16 +76,26 @@ function onload() {
     };
     clearErrors();
     const authController = newAuthcontroller();
-    const response = authController.register(registerPayLoad);
-    if ((response.type = "failure")) {
+    const response = await authController.register(registerPayLoad);
+    if ((response.type === 'failure')) {
       switch (response.code) {
         case responseCode.auth.register.invalid_input:
           //invalid input
           showErrors(response.data);
           break;
       }
+    }else {
+      switch (response.code) {
+        case responseCode.auth.register.success:
+          //success input
+            showSuccessMessage();
+      }
     }
   });
+}
+
+function showSuccessMessage() {
+  Swal.fire("Success!", "Please check your email to verify", "success");
 }
 
 function showErrors(errors) {
@@ -106,6 +115,7 @@ function showErrors(errors) {
     }
   }
 }
+
 function clearErrors() {
   const errorFeedbacks = document.getElementsByClassName("invalid-feedback");
   while (errorFeedbacks.length > 0) {
