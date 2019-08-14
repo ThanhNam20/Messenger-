@@ -2,9 +2,10 @@ import login from "./login.js";
 import view from "../view.js";
 import newAuthcontroller from "../../Controllers/authController.js";
 const resetPassScreen = `<div class="container">
+<h3 class="card-title mt-3 text-center">Reset password</h3>
         <div class="row">
-                <article class="card-body mx-auto" style="max-width: 500px;">
-                    <h3 class="card-title mt-3 text-center">Reset password</h3>
+                <article  class=" ahihi card-body mx-auto" style="max-width: 450px;">
+                    
                     <hr>
                     <form>
                         <div class="form-group input-group">
@@ -14,7 +15,7 @@ const resetPassScreen = `<div class="container">
                         <input id="email" class="form-control" placeholder="Email address" type="email">
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="button" id="reset" class="btn btn-primary btn-block"> Reset password </button>
+                        <button type="button" id="reset" class="btn btn-outline-primary btn-block"> Reset password </button>
                     </div> <!-- form-group// -->
                     <p class="text-left"><a href="#" id="backToLoginPage">Back ></a> </p>
                     </form>

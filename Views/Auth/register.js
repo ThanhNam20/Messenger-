@@ -6,10 +6,11 @@ import messages from "../status.js";
 
 const registerScreen = `
 <div class="container">
-        <div class="row">
-            <article class="card-body mx-auto" style="max-width: 500px;">
-                <h4 class="card-title mt-3 text-center">Create Account</h4>
+<h4 class="card-title mt-3 text-center">Create Account</h4>
                 <p class="text-center">Get started with your free account</p>
+        <div class="row">
+            <article class=" ahihi card-body mx-auto" style="max-width: 450px;">
+                
                 <p>
                     <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i>   Login with Google+ </a>
                     <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login with Facebook</a>
@@ -51,7 +52,7 @@ const registerScreen = `
                         <input class="form-control" id="repassword" placeholder="Repeat password" type="password">
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="button" id="js-btnRegister" class="btn btn-primary btn-block"> Create Account </button>
+                        <button type="button" id="js-btnRegister" class="btn btn-outline-primary btn-block"> Create Account </button>
                     </div> <!-- form-group// -->
                     <p class="text-center">Have an account? <a href="#" id="loginPage" >Sign in</a> </p>
                 </form>

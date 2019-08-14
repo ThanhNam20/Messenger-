@@ -3,10 +3,11 @@ import register from "./register.js";
 import forgetpassword from "./forgetpassword.js";
 import newAuthcontroller from "../../Controllers/authController.js";
 
-const loginScreen = `<div class="container">
+const loginScreen = `<div class="container" " >
+<h3 class="card-title mt-3 text-center">Sign In</h3>
         <div class="row">
-            <article class="card-body mx-auto" style="max-width: 500px;">
-                <h3 class="card-title mt-3 text-center">Sign in</h3>
+            <article class=" ahihi card-body mx-auto" style="max-width: 450px;">
+                
                     <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i> Sign in with Google+
                     </a>
                     <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> Sign in with
@@ -27,10 +28,10 @@ const loginScreen = `<div class="container">
                         <input id="password" class="form-control" placeholder="Password" type="password">
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="submit" id="login" class="btn btn-success btn-block"> Sign in </button>
+                        <button type="submit" id="login" class="btn btn-outline-success btn-block"> Sign In </button>
                         <hr>
                         <p class="text-left" ><a href="#" id="resetPassPage">Forgot password?</a></p>
-                        <button id="newAccountPage" type="button" class="btn btn-primary btn-block"> Create New Account </button>
+                        <button id="newAccountPage" type="button" class="btn btn-outline-primary btn-block"> Create New Account </button>
                     </div> <!-- form-group// -->
                 </form>
             </article>
