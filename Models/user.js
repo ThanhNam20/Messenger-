@@ -1,6 +1,6 @@
 export const authedUser = {
-    id: 1,
-    displayName: "Nam",
+    id: "khuatthanhnam@gmail.com",
+    displayName: "Nam"
 }
 
 export const listUser = {
