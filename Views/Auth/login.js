@@ -43,7 +43,7 @@ function onload() {
     const newAccountPage = document.getElementById("newAccountPage");
     const google = document.getElementById("google");
     const facebook = document.getElementById("facebook");
-
+    
     resetPassPage.addEventListener("click", function() {
       view.loadScreen(forgetpassword.view, forgetpassword.onload);
     });
