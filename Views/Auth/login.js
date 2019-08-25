@@ -10,7 +10,7 @@ const loginScreen = `<div class="container" " >
                 
                     <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i> Sign in with Google+
                     </a>
-                    <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> Sign in with
+                    <a href="" id="facebook" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> Sign in with
                         Facebook</a>
                 </p>
                 <hr>
@@ -61,6 +61,15 @@ function onload() {
         view.loadScreen(register); 
     });
     
+    facebook.addEventListener("click", event => {
+      event.preventDefault();
+      facebookLogin();
+    });
+
+    google.addEventListener("click", event => {
+      event.preventDefault();
+      googleLogin();
+    });
 }
 const login = {
     content: loginScreen,

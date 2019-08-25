@@ -3,7 +3,8 @@ import login from "./login.js";
 import newAuthcontroller from "../../Controllers/authController.js";
 import { responseCode } from "../../Controllers/response.js";
 import messages from "../status.js";
-
+import {googleLogin} from "../../Controllers/googleLogin.js";
+import {facebookLogin} from "../../Controllers/facebookLogin.js"
 const registerScreen = `
 <div class="container">
 <h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -12,8 +13,8 @@ const registerScreen = `
             <article class=" ahihi card-body mx-auto" style="max-width: 450px;">
                 
                 <p>
-                    <a href="" class="btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i>   Login with Google+ </a>
-                    <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login with Facebook</a>
+                    <a href="" id="google" class=" btn btn-block btn-outline-danger"> <i class="fab fa-google-plus-g"></i>   Login with Google+ </a>
+                    <a href="" id="facebook" class=" btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login with Facebook</a>
                 </p>
                 <hr>
                 
@@ -63,9 +64,23 @@ function onload() {
   const btnRegister = document.getElementById("js-btnRegister");
   const formRegister = document.getElementById("js-formRegister");
   const loginPage = document.getElementById("loginPage");
+  const google = document.getElementById('google');
+  const facebook = document.getElementById("facebook");
+
+  facebook.addEventListener("click", event => {
+    event.preventDefault();
+    facebookLogin();
+  });
+
+  google.addEventListener('click',(event) => {
+    event.preventDefault();
+    googleLogin();
+  })
+
   loginPage.addEventListener("click", function() {
     view.loadScreen(login);
   });
+  
   btnRegister.addEventListener("click", async function(event){
     event.preventDefault();
     const registerPayLoad = {
@@ -98,6 +113,7 @@ function onload() {
   });
 }
 
+
 function showSuccessMessage() {
   Swal.fire("Success!", "Please check your email to verify", "success");
 }
@@ -126,6 +142,8 @@ function clearErrors() {
     errorFeedbacks[0].remove();
   }
 }
+
+
 
 const register = {
   content: registerScreen,

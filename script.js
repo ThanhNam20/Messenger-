@@ -7,4 +7,5 @@ import chat from "./Views/Chat/chatScreen.js";
 //import forgetpassword from "./Views/Auth/forgetpassword.js";
 window.onload = function () {
     view.loadScreen(home);
+
 }
